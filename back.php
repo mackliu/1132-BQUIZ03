@@ -13,7 +13,7 @@
 <body>
 <div id="main">
   <div id="top" style=" background:#999 center; background-size:cover; " title="替代文字">
-    <h1>ABC影城</h1>
+  <h1 style="margin:0;padding:0">ABC影城</h1>
   </div>
   <div id="top2"> 
     <a href="index.php">首頁</a> 
