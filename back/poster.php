@@ -20,7 +20,7 @@ foreach($rows as $row):
         <img src="./upload/<?=$row['img'];?>" style="width:65px;">
     </div>
     <div style="width:25%">
-        <input type="text" name="name" value="<?=$row['name'];?>">
+        <input type="text" name="name[]" value="<?=$row['name'];?>">
         </div>
     <div style="width:25%">
         <input type="button" value="往上">
@@ -35,7 +35,7 @@ foreach($rows as $row):
             <option value="3"  <?=($row['ani']==3)?"selected":"";?>>滑入滑出</option>
         </select>
     </div>
-
+    <input type="hidden" name="id[]" value="<?=$row['id'];?>">
 </div>
 <hr>
 <?php 
