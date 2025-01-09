@@ -11,8 +11,10 @@
 <form action="./api/edit_poster.php" method="post">
 <div style="overflow:auto;height:210px;">
 <?php
-$rows=$Poster->all();
-foreach($rows as $row):
+$rows=$Poster->all(" order by rank");
+foreach($rows as $idx => $row):
+    $prev=($idx!=0)?$rows[$idx-1]['id']:$row['id'];
+    $next=($idx!=(count($rows)-1))?$rows[$idx+1]['id']:$row['id'];
 ?>
 <div style="display:flex; justify-content:space-between;text-align:center
 ">
@@ -23,8 +25,12 @@ foreach($rows as $row):
         <input type="text" name="name[]" value="<?=$row['name'];?>">
         </div>
     <div style="width:25%">
-        <input type="button" value="往上">
-        <input type="button" value="往下">
+        <?php if($row['id']!=$prev):?>
+        <input type="button" value="往上" class='sw' data-id="<?=$row['id'];?>" data-sw="<?=$prev;?>">
+        <?php endif;?>
+        <?php if($row['id']!=$next):?>
+        <input type="button" value="往下" class='sw' data-id="<?=$row['id'];?>" data-sw="<?=$next;?>">
+        <?php endif;?>
     </div>
     <div style="width:24%">
         <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?"checked":"";?>>顯示
@@ -47,6 +53,21 @@ endforeach;
 </div>
 </form>
 </div>
+
+
+<script>
+$(".sw").on("click",function(){
+
+    let id=$(this).data('id');
+    let sw=$(this).data('sw');
+    $.post("./api/sw.php",{table:'Poster',id,sw},()=>{
+        location.reload();
+    })
+})
+
+
+</script>
+
 <hr>
 <div style="height:170px;">
 <h3 class='ct'>新增預告片海報</h3>
