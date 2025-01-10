@@ -11,12 +11,25 @@
 </div>
 <div class="half">
     <h1>院線片清單</h1>
+    <?php 
+    $today=date("Y-m-d");
+    $ondate=date("Y-m-d",strtotime("-2 days"));
+
+    $all=$Movie->count(['sh'=>1]," AND ondate BETWEEN '$ondate' AND '$today'");
+    $div=4;
+    $pages=ceil($all/$div);
+    $now=$_GET['p']??1; 
+    $start=($now-1)*$div;
+
+    $rows=$Movie->all(['sh'=>1]," AND ondate BETWEEN '$ondate' AND '$today' order by rank limit $start,$div");
+
+    ?>
     <div class="rb tab" style="width:95%;">
-        <table>
-            <tbody>
-                <tr> </tr>
-            </tbody>
-        </table>
+        <div>
+            
+        </div>
         <div class="ct"> </div>
     </div>
 </div>
+
+
