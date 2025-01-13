@@ -141,6 +141,17 @@ function sliders(){
     }
     
 }
+let total=$(".icon").length;
+let p=0;
+$(".left,.right").on("click",function(){
+    if((p+1)<=(total-4)){
+        p++;
+        $(".icon").animate({right:80*p});
+    }
+    
+
+
+})
 
 
 </script>
