@@ -41,14 +41,17 @@
     border-top:15px solid transparent;
     border-bottom:15px solid transparent;
 }
+
 .left{
     border-right:25px solid #eee;
     border-left:0;
 }
+
 .right{
     border-left:25px solid #eee;
     border-right:0;
 }
+
 .icons{
     width:320px;
     display:flex;
@@ -119,7 +122,7 @@ function sliders(next=-1){
         next=($(".poster").length==now+1)?0:now+1;
     }
     let ani=$(".poster").eq(next).data('ani');
-    console.log(now,next,ani)
+    //console.log(now,next,ani)
     //console.log(now,next)
 
     switch(ani){
