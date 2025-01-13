@@ -25,16 +25,29 @@
     height:85px;
     text-align: center;
     padding:2px;
+    position:relative;
+}
+.null{
+    background:url("icon/03D02.png") center no-repeat;
+}
+.booked{
+    background:url("icon/03D03.png") center no-repeat;
 }
 
+.chk{
+    position:absolute;
+    right:2px;
+    bottom:2px;
+}
 </style>
 <?php  include_once "db.php";?>
 
 <div id="info">
     <?php 
         for($i=0;$i<20;$i++){
-            echo "<div class='seat'>";
+            echo "<div class='seat null'>";
             echo  floor($i/5)+1 ."排".($i%5+1)."號";
+            echo "<input type='checkbox' class='chk' value='$i'>";
             echo "</div>";
         }
     ?>
