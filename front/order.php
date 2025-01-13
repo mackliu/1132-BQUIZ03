@@ -47,10 +47,17 @@
 
 <script>
 getMovies();
+let id=new URLSearchParams(location.href).get('id');
+//console.log(id);
+
 function getMovies(){
     $.get("api/get_movies.php",function(movies){
         console.log(movies);
         $("#movie").html(movies);
+
+        if(parseInt(id)>0){
+            $(`#movie option[value='${id}']`).prop('selected',true);
+        }
     })
 }
 </script>
