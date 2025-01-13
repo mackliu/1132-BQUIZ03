@@ -19,7 +19,7 @@ $seats=20;
 
 for($i=$start;$i<=5;$i++){
 
-    echo "<option value='${$sess[$i]}'>";
+    echo "<option value='{$sess[$i]}'>";
     echo "  {$sess[$i]} 剩餘座位 $seats";
     echo "</option>";
 }
