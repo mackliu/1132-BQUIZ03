@@ -20,6 +20,9 @@
     .order-form tr:nth-child(even){
         background:#999;
     }
+    #booking *{
+        box-sizing:border-box;
+    }
 </style>
 <div id="order">
 <h3 class='ct'>線上訂票</h3>
@@ -98,9 +101,11 @@ function booking(){
            session:$("#session").val()
     }
 
-    $("#booking").html(`${movie.id},${movie.date},${movie.name},<button  onclick="$('#order,#booking').toggle()">上一步</button>`)
+   $.get("api/booking.php",movie,function(booking){
+        $("#booking").html(booking)
+        $("#booking,#order").toggle();
+   })
 
-    $("#booking,#order").toggle();
 
 }
 
