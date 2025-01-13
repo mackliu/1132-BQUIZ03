@@ -159,6 +159,17 @@ $(".left,.right").on("click",function(){
     $(".icon").animate({right:p*80}); 
 })
 
+$(".icons").hover(
+    function(){
+        clearInterval(slider);
+    },
+    function(){
+        slider=setInterval(() => {
+            sliders();
+        }, 2500);
+    }
+)
+
 
 </script>
 
