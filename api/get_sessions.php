@@ -18,7 +18,12 @@ $start=($now>0)?ceil($now/2)+1:1;
 $seats=20;
 
 for($i=$start;$i<=5;$i++){
-
+    $booked=$Order->sum('qt',[
+        'movie'=>$movie['name'],
+        'date'=>$date,
+        'session'=>$sess[$i]
+    ]);
+    $seats=20-$booked;
     echo "<option value='{$sess[$i]}'>";
     echo "  {$sess[$i]} 剩餘座位 $seats";
     echo "</option>";
