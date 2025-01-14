@@ -40,14 +40,31 @@
     bottom:2px;
 }
 </style>
-<?php  include_once "db.php";?>
+<?php  include_once "db.php";
+
+$rows=$Order->all(['movie'=>$_GET['name'],'date'=>$_GET['date'],'session'=>$_GET['session']]);
+$seats=[];
+foreach($rows as $row){
+    $tmp=unserialize($row['seats']);
+    $seats=array_merge($seats,$tmp);
+}
+//dd($seats);
+?>
 
 <div id="info">
     <?php 
         for($i=0;$i<20;$i++){
-            echo "<div class='seat null'>";
+            $booked=(in_array($i,$seats))?"booked":"null";
+            echo "<div class='seat $booked'>";
+            /* if(in_array($i,$seats)){
+                echo "<div class='seat booked'>";
+            }else{
+                echo "<div class='seat null'>";
+            } */
             echo  floor($i/5)+1 ."排".($i%5+1)."號";
-            echo "<input type='checkbox' class='chk' value='$i'>";
+            if(!in_array($i,$seats)){
+                echo "<input type='checkbox' class='chk' value='$i'>";
+            }
             echo "</div>";
         }
     ?>
