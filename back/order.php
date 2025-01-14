@@ -1,7 +1,7 @@
 <h1 class='ct'>訂單清單</h1>
 <div>
     快速刪除：
-    <input type="radio" name="type"  value='date' checked>依日期
+    <input type="radio" name="type"  value='date' >依日期
     <input type="text" name="date" id="date">
     
     <input type="radio" name="type" value="movie">依電影
@@ -75,14 +75,30 @@ function del(id){
 }
 
 function qdel(){
+    if($("input[name='type']:checked").val()==undefined){
+        alert("請選擇刪除條件");
+        return;
+    }
     let type=$("input[name='type']:checked").val();
     let data="";
     switch(type){
         case "date":
-            data=$("#date").val();
+            if($("#date").val()==""){
+                alert("請選擇日期");
+                return;
+            }else{
+
+                data=$("#date").val();
+            }
+
         break;
         case "movie":
+            if($("#movie").val()==null){
+                alert("請選擇電影");
+                return;
+            }else{
             data=$("#movie").val();
+            }
         break;
     }
 
