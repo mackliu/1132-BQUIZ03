@@ -82,6 +82,7 @@ function getMovies(){
 
 function getDays(){
     $.get("api/get_days.php",{movie:$("#movie").val()},function(days){
+        console.log(days)
         $("#date").html(days);
         getSessions();
     })
@@ -89,6 +90,7 @@ function getDays(){
 
 function getSessions(){
     $.get("api/get_sessions.php",{movie:$("#movie").val(),date:$("#date").val()},function(sessions){
+       // console.log(sessions)
         $("#session").html(sessions);
     })
 
