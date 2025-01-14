@@ -13,7 +13,7 @@ $sess=[
 ];
 $now=date("G")-13;
 
-$start=ceil($now/2)+1;
+$start=($now>0)?ceil($now/2)+1:1;
 
 $seats=20;
 
