@@ -24,7 +24,15 @@ function getMovies() {
         $(".show").on("click", function() {
             let id = $(this).data('id');
             $.post("./api/show.php", {id}, () => {
-                getMovies();
+                //getMovies();
+                switch($(this).text()){
+                    case "顯示":
+                        $(this).text("隱藏");
+                        break;
+                    case "隱藏":
+                        $(this).text("顯示");
+                        break;
+                }
             })
         })
 
