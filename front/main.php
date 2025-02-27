@@ -192,6 +192,7 @@ $(".icon").on("click",function(){
     $ondate=date("Y-m-d",strtotime("-2 days"));
 
     $all=$Movie->count(['sh'=>1]," AND ondate BETWEEN '$ondate' AND '$today'");
+    //echo $all;
     $div=4;
     $pages=ceil($all/$div);
     $now=$_GET['p']??1; 

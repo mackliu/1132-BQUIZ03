@@ -115,8 +115,25 @@ class DB{
     function avg($col,$where=[]){
         return $this->avg('avg',$col,$where);
     }
-    function count($where=[]){
-        return $this->math('count','*',$where);
+    function count(...$arg){
+        $sql="SELECT count(*) FROM $this->table ";
+        if(!empty($arg[0])){
+            if(is_array($arg[0])){
+
+                $where=$this->a2s($arg[0]);
+                $sql=$sql . " WHERE ". join(" && ",$where);
+            }else{
+                //$sql=$sql.$arg[0];
+                $sql .= $arg[0];
+
+            }
+        }
+
+        if(!empty($arg[1])){
+            $sql=$sql . $arg[1];
+        }
+
+        return $this->pdo->query($sql)->fetchColumn();
     }
 
     /**
