@@ -1,8 +1,5 @@
 <?php 
-
-
 if(isset($_POST['acc'])){
-
     if($_POST['acc']=='admin' && $_POST['pw']=='1234'){
        $_SESSION['login']=1;
    }else{
